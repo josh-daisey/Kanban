@@ -2,27 +2,10 @@
 <html lang="en">
 
 <head>
-    <style>
-        #sortable1,
-        #sortable2 {
-            border: 1px solid #eee;
-            width: 142px;
-            min-height: 20px;
-            list-style-type: none;
-            margin: 0;
-            padding: 5px 0 0 0;
-            float: left;
-            margin-right: 10px;
-        }
-
-        #sortable1 li,
-        #sortable2 li {
-            margin: 0 5px 5px 5px;
-            padding: 5px;
-            font-size: 1.2em;
-            width: 120px;
-        }
-    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Sortable - Portlets</title>
+    <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
@@ -31,53 +14,6 @@
                 connectWith: ".connectedSortable"
             }).disableSelection();
         });
-    </script>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>jQuery UI Sortable - Portlets</title>
-    <link rel="stylesheet" href="code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <style>
-        body {
-            min-width: 520px;
-        }
-
-        .column {
-            width: 170px;
-            float: left;
-            padding-bottom: 100px;
-        }
-
-        .portlet {
-            margin: 0 1em 1em 0;
-            padding: 0.3em;
-        }
-
-        .portlet-header {
-            padding: 0.2em 0.3em;
-            margin-bottom: 0.5em;
-            position: relative;
-        }
-
-        .portlet-toggle {
-            position: absolute;
-            top: 50%;
-            right: 0;
-            margin-top: -8px;
-        }
-
-        .portlet-content {
-            padding: 0.4em;
-        }
-
-        .portlet-placeholder {
-            border: 1px dotted black;
-            margin: 0 1em 1em 0;
-            height: 50px;
-        }
-    </style>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script>
         $(function() {
             $(".column").sortable({
                 connectWith: ".column",
@@ -104,9 +40,8 @@
 <body>
 
     <div class="column">
-
         <div class="portlet">
-            <div class="portlet-header">Todo</div>
+            <div class="portlet-header">Tasks</div>
             <div class="portlet-content">
                 <ul id="sortable1" class="connectedSortable">
                     <li class="ui-state-default">Item 1</li>
@@ -142,7 +77,7 @@
         <div class="portlet">
             <div class="portlet-header">Done</div>
             <div class="portlet-content">
-                <ul id="sortable2" class="connectedSortable">
+                <ul id="sortable1" class="connectedSortable">
                     <li class="ui-state-highlight">Item 1</li>
                     <li class="ui-state-highlight">Item 2</li>
                     <li class="ui-state-highlight">Item 3</li>
