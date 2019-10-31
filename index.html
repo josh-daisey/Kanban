@@ -3,17 +3,17 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>jQuery UI Sortable - Portlets</title>
+    <title>KanBan</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
         $(function() {
-            $("#sortable1, #sortable2").sortable({
+            $("#sortable, #sortable").sortable({
                 connectWith: ".connectedSortable"
             }).disableSelection();
         });
+
         $(function() {
             $(".column").sortable({
                 connectWith: ".column",
@@ -43,7 +43,7 @@
         <div class="portlet">
             <div class="portlet-header">Tasks</div>
             <div class="portlet-content">
-                <ul id="sortable1" class="connectedSortable">
+                <ul id="sortable" class="connectedSortable">
                     <li class="ui-state-default">Item 1</li>
                     <li class="ui-state-default">Item 2</li>
                     <li class="ui-state-default">Item 3</li>
@@ -60,12 +60,12 @@
         <div class="portlet">
             <div class="portlet-header">Doing</div>
             <div class="portlet-content">
-                <ul id="sortable2" class="connectedSortable">
-                    <li class="ui-state-highlight">Item 1</li>
-                    <li class="ui-state-highlight">Item 2</li>
-                    <li class="ui-state-highlight">Item 3</li>
-                    <li class="ui-state-highlight">Item 4</li>
-                    <li class="ui-state-highlight">Item 5</li>
+                <ul id="sortable" class="connectedSortable">
+                    <li class="ui-state-default">Item 1</li>
+                    <li class="ui-state-default">Item 2</li>
+                    <li class="ui-state-default">Item 3</li>
+                    <li class="ui-state-default">Item 4</li>
+                    <li class="ui-state-default">Item 5</li>
                 </ul>
             </div>
         </div>
@@ -73,16 +73,15 @@
     </div>
 
     <div class="column">
-
         <div class="portlet">
             <div class="portlet-header">Done</div>
             <div class="portlet-content">
-                <ul id="sortable1" class="connectedSortable">
-                    <li class="ui-state-highlight">Item 1</li>
-                    <li class="ui-state-highlight">Item 2</li>
-                    <li class="ui-state-highlight">Item 3</li>
-                    <li class="ui-state-highlight">Item 4</li>
-                    <li class="ui-state-highlight">Item 5</li>
+                <ul id="sortable" class="connectedSortable">
+                    <li class="ui-state-default">Item 1</li>
+                    <li class="ui-state-default">Item 2</li>
+                    <li class="ui-state-default">Item 3</li>
+                    <li class="ui-state-default">Item 4</li>
+                    <li class="ui-state-default">Item 5</li>
                 </ul>
             </div>
         </div>

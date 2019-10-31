@@ -3,26 +3,6 @@ html{
     background-color: #4bbf6b;
 }
 
-#sortable {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 60%;
-}
-
-#sortable li {
-    margin: 0 3px 3px 3px;
-    padding: 0.4em;
-    padding-left: 1.5em;
-    font-size: 1.4em;
-    height: 18px;
-}
-
-#sortable li span {
-    position: absolute;
-    margin-left: -1.3em;
-}
-
 body, button, html, input, select, textarea {
 	color: #172b4d;
 	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans,Helvetica Neue,sans-serif;
@@ -74,8 +54,7 @@ body, button, html, input, select, textarea {
     height: 50px;
 }
 
-#sortable1,
-#sortable2 {
+#sortable {
     width: 142px;
     min-height: 20px;
     list-style-type: none;
@@ -85,8 +64,7 @@ body, button, html, input, select, textarea {
     margin-right: 10px;
 }
 
-#sortable1 li,
-#sortable2 li {
+#sortable li {
     box-shadow: 0px 2px 0px 0px #b2b8c4;
     border-radius: 5px;
     border: 3px solid white;
