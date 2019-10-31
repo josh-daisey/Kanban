@@ -9,12 +9,26 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
         $(function() {
+            $('li').mousedown(function() {
+                $(this).css('cursor', 'grabbing');
+            });
+            $('li').mouseup(function() {
+                $(this).css('cursor', 'grab');
+            });
+        });
+        $(function() {
             $("#sortable, #sortable").sortable({
                 connectWith: ".connectedSortable"
-            }).disableSelection();
+            })
         });
 
         $(function() {
+            $('li').dblclick(function(event) {
+                $this = $(this);
+                $this.attr('contenteditable', "true");
+                $this.blur();
+                $this.focus();
+            });
             $(".column").sortable({
                 connectWith: ".column",
                 handle: ".portlet-header",
