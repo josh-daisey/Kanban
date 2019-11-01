@@ -1,21 +1,37 @@
-//  When click and draging the task boxes, changes cursor icon.
 $(function() {
+  /*
+      The distinction between manipulating the list items, and tags with the
+      portlet-header was in order to provide a difference between them
+      when hovering to give a better feel.
+  */
   $('li').mousedown(function() {
+    //  When click and draging the card, changes cursor icon.
+    $(this).css('cursor', 'grabbing');
+    //  When right clicking card, wont bring up context menu
+    $(this).attr('oncontextmenu', "return false");
+  });
+  $('.portlet-header').mousedown(function() {
+    //  When click and draging the card container, change cursor icon.
     $(this).css('cursor', 'grabbing');
   });
-  $('li').mouseup(function() {
+
+  //  On mouse release, change cursor icon
+  $('.portlet-header').mouseup(function() {
     $(this).css('cursor', 'grab');
+  });
+  $('li').mouseup(function() {
+    $(this).css('cursor', 'pointer');
   });
 });
 
-//  Allows the task boxes to be moved
+//  Allows the cards to be moved
 $(function() {
   $("#sortable, #sortable").sortable({
     connectWith: ".connectedSortable"
   })
 });
 
-//  Allows the task boxes to be edited with a double click
+//  Allows the cards to be edited with a double click
 $(function() {
   $('li').dblclick(function(event) {
     $this = $(this);
@@ -24,7 +40,7 @@ $(function() {
     $this.focus();
   });
 
-  //  Allows the portlets to be moved and sorted
+  //  Allows the card containers to be moved and sorted
   $(".column").sortable({
     connectWith: ".column",
     handle: ".portlet-header",
