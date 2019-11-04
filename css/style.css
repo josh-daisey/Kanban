@@ -65,7 +65,7 @@ body, button, html, input, select, textarea {
   padding-right: 100px;
 }
 
-#sortable {
+#card {
   width: 142px;
   min-height: 20px;
   list-style-type: none;
@@ -75,14 +75,24 @@ body, button, html, input, select, textarea {
   margin-right: 10px;
 }
 
-#sortable li {
-  cursor: pointer;
-  box-shadow: 0px 2px 0px 0px #b2b8c4;
+#card li {
+  word-wrap: break-word;
+  display: inline-block;
   border-radius: 5px;
-  border: 3px solid white;
-  background-color: white;
   margin: 0 5px 7px 5px;
   padding: 5px;
   font-size: 1.2em;
   width: 220px;
+}
+
+.ui-state-default {
+  cursor: pointer;
+  border: 3px solid white;
+  background-color: white;
+  box-shadow: 0px 2px 0px 0px #b2b8c4;
+}
+
+.ui-state-highlight {
+  background-color: #CFCFD1;
+  border: 3px solid #CFCFD1;
 }
