@@ -1,35 +1,44 @@
+//  Changes the color when hovered over
 $(function() {
-  /*
-      The distinction between manipulating the list items, and tags with the
-      portlet-header was in order to provide a difference between them
-      when hovering to give a better feel.
-  */
-  $('li').mousedown(function() {
-    //  When click and draging the card, changes cursor icon.
-    $(this).css('cursor', 'grabbing');
-    //  When right clicking card, wont bring up context menu
-    $(this).attr('oncontextmenu', "return false");
-  });
-  $('.portlet-header').mousedown(function() {
-    //  When click and draging the card container, change cursor icon.
-    $(this).css('cursor', 'grabbing');
-  });
-
-  //  On mouse release, change cursor icon
-  $('.portlet-header').mouseup(function() {
-    $(this).css('cursor', 'grab');
-  });
-  $('li').mouseup(function() {
-    $(this).css('cursor', 'pointer');
+  $('li').hover(function() {
+    $(this).css("background-color", "#F4F4F4");
+    $(this).css("border-color", "#F4F4F4");
+  }, function() {
+    $(this).css("background-color", "white");
+    $(this).css("border-color", "white");
   });
 });
 
 //  Allows the cards to be moved
 $(function() {
-  $("#sortable, #sortable").sortable({
-    connectWith: ".connectedSortable"
-  })
+  $("#card, #card").sortable({
+    //  Tolerance: "pointer", makes moving the card more accurate
+    tolerance: "pointer",
+    //  Scroll: false, used so the card doesnt scroll off screen
+    scroll: false,
+    // Adds an animation for placing the card
+    revert: (true, 250),
+    opacity: 0.75,
+    connectWith: ".cardSortable",
+    placeholder: "ui-state-highlight",
+
+    //  Makes the placeholder the same size as the card
+
+    start: function(e, ui) {
+      /*  The minus 4.30 makes it so that the placeholder doesnt move the
+          other card
+      */
+      ui.placeholder.height(ui.item.height() - 4.30);
+    },
+    cursor: "grabbing",
+    cursorAt: {
+      left: 236 / 2
+    }
+  });
+  console.log($(this).height())
+  $("#card").disableSelection();
 });
+
 
 //  Allows the cards to be edited with a double click
 $(function() {
@@ -45,7 +54,8 @@ $(function() {
     connectWith: ".column",
     handle: ".portlet-header",
     cancel: ".portlet-toggle",
-    placeholder: "portlet-placeholder ui-corner-all"
+    placeholder: "portlet-placeholder ui-corner-all",
+    cursor: "grabbing"
   });
 
   $(".portlet")
