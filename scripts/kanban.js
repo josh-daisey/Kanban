@@ -40,7 +40,15 @@ $(function() {
 });
 
 
-//  Allows the cards to be edited with a double click
+$(function() {
+  $('li, .portlet-header').dblclick(function(event) {
+    $this = $(this);
+    $this.attr('contenteditable', "true");
+    $this.blur();
+    $this.focus();
+  });
+})
+
 $(function() {
   $('li').dblclick(function(event) {
     $this = $(this);
@@ -48,9 +56,18 @@ $(function() {
     $this.blur();
     $this.focus();
   });
+})
 
+//  Allows the cards to be edited with a double click
+function initPortlets() {
   //  Allows the card containers to be moved and sorted
   $(".column").sortable({
+    start: function(e, ui) {
+      /*  The minus 4.30 makes it so that the placeholder doesnt move the
+          other card
+      */
+      ui.placeholder.height(ui.item.height() + 6);
+    },
     connectWith: ".column",
     handle: ".portlet-header",
     cancel: ".portlet-toggle",
@@ -63,10 +80,23 @@ $(function() {
     .find(".portlet-header")
     .addClass("ui-widget-header ui-corner-all")
     .prepend("<span class='ui-icon ui-icon-minusthick portlet-toggle'></span>");
+}
 
-  $(".portlet-toggle").on("click", function() {
-    var icon = $(this);
-    icon.toggleClass("ui-icon-minusthick ui-icon-plusthick");
-    icon.closest(".portlet").find(".portlet-content").toggle();
-  });
+function addList() {
+  $(".add-new-list").before('<div class="column"> <div class="portlet"><div class="portlet-header">New list</div><div class="portlet-content"><ul id="card" class="cardSortable"></ul></div></div>');
+  width = $("body").css("width")
+
+  //  This increases the width of the page when we add new columns
+  var widthSplit = width.match(/[a-z]+|[^a-z]+/gi);
+  console.log(widthSplit[0])
+  newWidth = parseInt(widthSplit[0]) + 300 + "px"
+  console.log(newWidth)
+  $("body").css("width", newWidth);
+
+
+  initPortlets()
+}
+
+$(function() {
+  initPortlets()
 });
