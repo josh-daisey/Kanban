@@ -12,7 +12,10 @@ $(function() {
 
 //  Allows the cards to be moved
 function cardSortable() {
+
     $(".card, .card").sortable({
+        //  Makes it so that the button doesnt move when other cards are moved
+        items: "li:not(.ui-state-disabled)",
         //  Tolerance: "pointer", makes moving the card more accurate
         tolerance: "pointer",
         //  Scroll: false, used so the card doesnt scroll off screen
@@ -94,6 +97,7 @@ function addList() {
 
 function addCard(id) {
     $(id).before("<li class=\"ui-state-default\">New Card</li>")
+    // $(id).parent().remove()
     init()
 }
 
