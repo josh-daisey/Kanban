@@ -42,7 +42,7 @@ function cardSortable() {
 
 function editText() {
     $(function() {
-        $('li, .portlet-header').dblclick(function(event) {
+        $('.cardtext, .portlet-header').dblclick(function(event) {
             $this = $(this);
             $this.attr('contenteditable', "true");
             $this.blur();
@@ -93,8 +93,12 @@ function addList() {
 }
 
 function addCard(id) {
-    $(id).before("<li class=\"ui-state-default\">New Card</li>")
+    $(id).before("<li class=\"ui-state-default\"> <p class=\"cardtext\"> New Card </p> <img id =\"del\" src=\"img/x.png\" onclick=\"deleteCard(this)\"/></li>")
+
     init()
+}
+function deleteCard(id){
+    $(id).parent().remove()
 }
 
 function init() {
