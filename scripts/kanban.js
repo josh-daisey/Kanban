@@ -78,7 +78,7 @@ function initPortlets() {
     .prepend("<span class='ui-icon ui-icon-minusthick portlet-toggle'></span>")
     .addClass("initialized")
   $(".cardSortable:not(.initialized)")
-    .append('<button class="add-new-card" onclick="addCard(this)" > + add new card </button>')
+    .append('<button class="add-new-card" onclick="addCard(this)" > + Add new card </button>')
     .addClass("initialized")
 }
 
