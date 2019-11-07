@@ -97,6 +97,7 @@ function addCard(id) {
     init()
 }
 
+
 function init() {
     editText()
     initPortlets()
