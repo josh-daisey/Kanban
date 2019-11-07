@@ -1,4 +1,4 @@
-body, button, select, textarea {
+body,button, select, textarea {
     color: #172b4d;
     background-color: #4bbf6b;
     font-family: Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
@@ -123,4 +123,19 @@ body, button, select, textarea {
     display: inline-block;
     margin: 0;
     float: right;
+    padding-top: 5px;
+    width: 20px;
+    height: 15px;
+}
+#colorpickerbox{
+    cursor: pointer;
+    border-radius: 5px;
+    border: 3px solid white;
+    background-color: white;
+    box-shadow: 0px 2px 0px 0px #b2b8c4;
+}
+.cardtext {
+    display: inline-block;
+    margin: 0;
+    width: 190px;
 }
