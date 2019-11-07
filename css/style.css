@@ -118,3 +118,9 @@ body, button, select, textarea {
     padding: 0.5em;
     width: 236px;
 }
+
+#del{
+    display: inline-block;
+    margin: 0;
+    float: right;
+}
