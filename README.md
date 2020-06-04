@@ -1,2 +1,2 @@
-# KanBan
-KanBan in JS
+# Team E's Kanban
+Kanban in JS

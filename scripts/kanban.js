@@ -1,6 +1,6 @@
 //  Changes the color when hovered over
 $(function() {
-  $('li').hover(function() {
+  $('.ui-state-default').hover(function() {
     $(this).css("background-color", "#F4F4F4");
     $(this).css("border-color", "#F4F4F4");
   }, function() {
@@ -9,9 +9,12 @@ $(function() {
   });
 });
 
+
 //  Allows the cards to be moved
-$(function() {
-  $("#card, #card").sortable({
+function cardSortable() {
+
+  $(".card, .card").sortable({
+    items: "li:not(.add-new-card, .ui-state-disabled)",
     //  Tolerance: "pointer", makes moving the card more accurate
     tolerance: "pointer",
     //  Scroll: false, used so the card doesnt scroll off screen
@@ -35,22 +38,32 @@ $(function() {
       left: 236 / 2
     }
   });
-  console.log($(this).height())
-  $("#card").disableSelection();
-});
+  $(".card").disableSelection();
+}
+
+
+function editText() {
+  $(function() {
+    $('.cardtext, .portlet-header').dblclick(function(event) {
+      $this = $(this);
+      $this.attr('contenteditable', "true");
+      $this.blur();
+      $this.focus();
+    });
+  })
+}
 
 
 //  Allows the cards to be edited with a double click
-$(function() {
-  $('li').dblclick(function(event) {
-    $this = $(this);
-    $this.attr('contenteditable', "true");
-    $this.blur();
-    $this.focus();
-  });
-
+function initPortlets() {
   //  Allows the card containers to be moved and sorted
   $(".column").sortable({
+    start: function(e, ui) {
+      /*  The minus 4.30 makes it so that the placeholder doesnt move the
+          other card
+      */
+      ui.placeholder.height(ui.item.height() + 6);
+    },
     connectWith: ".column",
     handle: ".portlet-header",
     cancel: ".portlet-toggle",
@@ -58,15 +71,51 @@ $(function() {
     cursor: "grabbing"
   });
 
-  $(".portlet")
+  $(".portlet:not(.initialized)")
     .addClass("ui-widget ui-widget-content ui-helper-clearfix ui-corner-all")
     .find(".portlet-header")
     .addClass("ui-widget-header ui-corner-all")
-    .prepend("<span class='ui-icon ui-icon-minusthick portlet-toggle'></span>");
+    .prepend("<span class='ui-icon ui-icon-minusthick portlet-toggle'></span>")
+    .addClass("initialized")
+  $(".cardSortable:not(.initialized)")
+    .append('<button class="add-new-card" onclick="addCard(this)" > + Add new card </button>')
+    .addClass("initialized")
+}
 
-  $(".portlet-toggle").on("click", function() {
-    var icon = $(this);
-    icon.toggleClass("ui-icon-minusthick ui-icon-plusthick");
-    icon.closest(".portlet").find(".portlet-content").toggle();
-  });
+
+function addList() {
+  $(".add-new-list").before('<div class="column"> <div class="portlet"><div class="portlet-header">New list</div><div class="portlet-content"><ul class="cardSortable card"><li class=".ui-state-disabled" style="width: 0px; margin:0; padding:0;"></li></ul></div></div>');
+  width = $("body").css("width")
+
+  //  This increases the width of the page when we add new columns
+  var widthSplit = width.match(/[a-z]+|[^a-z]+/gi);
+  newWidth = parseInt(widthSplit[0]) + 300 + "px"
+  $("body").css("width", newWidth);
+  init()
+}
+
+function addCard(id) {
+  $(id).before("<li class=\"ui-state-default\"> <p class=\"cardtext\"> New Card </p> <img id =\"del\" src=\"img/x.png\" onclick=\"deleteCard(this)\"/></li>")
+
+  init()
+}
+
+function deleteCard(id) {
+  $(id).parent().remove()
+}
+
+function init() {
+  editText()
+  initPortlets()
+  cardSortable()
+}
+
+function changeBG() {
+  var selectedBGColor = document.getElementById("colorpickerbox").value;
+  document.body.style.background = "#" + selectedBGColor;
+
+}
+
+$(function() {
+  init()
 });
